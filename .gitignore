@@ -163,3 +163,4 @@ cython_debug/
 
 # Added by me
 commands
+lancedb/
