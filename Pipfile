@@ -15,6 +15,9 @@ einops = "*"
 lancedb = "*"
 transformers = "*"
 together = "*"
+python-dotenv = "*"
+tqdm = "*"
+gradio = "*"
 
 [dev-packages]
 tqdm = "*"
