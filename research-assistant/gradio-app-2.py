@@ -1,5 +1,6 @@
 import gradio as gr
 import os
+import shutil
 from ingest import PDFProcessor, EmbeddingGenerator, store_in_lancedb
 import pandas as pd
 from rag import RAGSystem
@@ -11,26 +12,28 @@ def create_directories():
     if not os.path.exists('./image_output'):
         os.makedirs('./image_output')
 
-# Function to handle PDF file upload and generate embeddings
 def process_pdf(pdf_file):
     if not pdf_file:
         return "No PDF file uploaded."
 
     try:
-        # Use the pdf_file.name as it already points to the path
-        pdf_path = pdf_file.name
-        print(f"PDF path: {pdf_path}")
+        # Save the uploaded PDF to the correct directory
+        pdf_filename = os.path.basename(pdf_file.name)
+        pdf_output_path = f"./uploaded_pdfs/{pdf_filename}"
+        shutil.copyfile(pdf_file.name, pdf_output_path)
+        print(f"PDF saved to: {pdf_output_path}")
 
-        # Process the PDF (text chunks + image extraction) using PDFProcessor
-        pdf_processor = PDFProcessor(pdf_path)
+        # Process the PDF (text chunks + image extraction)
+        pdf_processor = PDFProcessor(pdf_output_path)
         text_chunks = pdf_processor.extract_text_chunks()
         print(f"Text chunks extracted: {len(text_chunks)}")
 
-        output_dir = "./image_output"  # Directory to save images
+        # Ensure images are saved to the correct folder
+        output_dir = "./image_output"
         pdf_processor.extract_images(output_dir)
         print(f"Images extracted to {output_dir}")
 
-        # Generate embeddings using EmbeddingGenerator
+        # Generate embeddings
         embedding_generator = EmbeddingGenerator()
         df = embedding_generator.create_embeddings_dataframe(text_chunks, output_dir)
         print(f"Embeddings dataframe created with {len(df)} rows")
@@ -92,14 +95,14 @@ def create_gradio_app():
         upload_button.click(upload_pdf_action, inputs=[pdf_file], outputs=[embedding_status])
 
         # Question answering section
-        question = gr.Textbox(lines=2, label="Ask a question")
-        top_k = gr.Slider(1, 5, value=3, step=1, label="Number of top results")
-        model = gr.Dropdown(choices=['meta-llama/Llama-Vision-Free'], label="LLM Model")
+        question = gr.Textbox(lines=2, label="Ask a question:")
+        top_k = gr.Slider(1, 5, value=3, step=1, label="Select number of top results to be considered to get final answer:")
+        model = gr.Dropdown(choices=['meta-llama/Llama-Vision-Free'], label="Select LLM Model to use:")
 
         query_button = gr.Button("Get Answer")
 
-        answer_output = gr.Textbox(label="Generated Answer")
-        sources_output = gr.Textbox(label="Relevant Sources")
+        answer_output = gr.Textbox(label="Generated Answer:")
+        sources_output = gr.Textbox(label="Relevant Sources:")
 
         query_button.click(query_question, inputs=[question, top_k, model], outputs=[answer_output, sources_output])
 

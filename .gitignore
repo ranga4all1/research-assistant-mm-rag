@@ -1,3 +1,4 @@
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -165,3 +166,6 @@ cython_debug/
 commands
 lancedb/
 .envrc
+requirements.txt
+gradio-app.py
+notebooks/base-mm-rag.ipynb
