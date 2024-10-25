@@ -161,13 +161,15 @@ def store_in_lancedb(df, db_path="./lancedb"):
     db = lancedb.connect(db_path)
     df['content'] = df['content'].astype(str)
 
+    # table create
+
     table = db.create_table(
         "multimodal_embeddings",
         data=df,
         schema=schema,
         mode="overwrite"
     )
-
+    # Create an index on the table
     table.create_index(
         vector_column_name="embedding",
         index_type="IVF_HNSW_SQ",
@@ -177,10 +179,13 @@ def store_in_lancedb(df, db_path="./lancedb"):
 
     return table
 
+
 def main():
     # Configuration
     pdf_path = '../data/raw/attention.pdf'
     output_dir = "../data/processed/"
+    # pdf_path = './uploaded_pdfs'
+    # output_dir = './image_output'
 
     # Process PDF
     pdf_processor = PDFProcessor(pdf_path)

@@ -6,6 +6,7 @@ from together import Together
 from sentence_transformers import SentenceTransformer
 from transformers import CLIPModel, CLIPProcessor
 
+
 class EmbeddingResizer:
     """Utility class to resize embeddings to 768 dimensions"""
     @staticmethod
@@ -107,6 +108,7 @@ class RAGSystem:
         }
 
 def main():
+
     # Initialize RAG system
     rag_system = RAGSystem()
 

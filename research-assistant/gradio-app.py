@@ -5,6 +5,7 @@ from ingest import PDFProcessor, EmbeddingGenerator, store_in_lancedb
 import pandas as pd
 from rag import RAGSystem
 
+
 # Function to create directories if they don't exist
 def create_directories():
     if not os.path.exists('./uploaded_pdfs'):

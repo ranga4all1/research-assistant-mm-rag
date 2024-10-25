@@ -1,0 +1,11 @@
+version: '3'
+services:
+  research-assistant:
+    build: .
+    ports:
+      - "7860:7860"
+    volumes:
+      - .:/app
+    environment:
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
