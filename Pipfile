@@ -18,6 +18,7 @@ together = "*"
 python-dotenv = "*"
 tqdm = "*"
 gradio = "*"
+rouge-score = "*"
 
 [dev-packages]
 tqdm = "*"

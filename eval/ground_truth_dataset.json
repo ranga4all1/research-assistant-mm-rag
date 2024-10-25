@@ -1,0 +1,213 @@
+[
+    {
+        "question": "What is the key innovation of the transformer architecture?",
+        "ground_truth_answer": "The key innovation is the self-attention mechanism that directly models relationships between all words in a sequence, regardless of their position, allowing the model to process all positions simultaneously.",
+        "relevant_chunks": [
+            "text_18",
+            "text_5",
+            "text_7"
+        ],
+        "page_numbers": [
+            2,
+            5
+        ]
+    },
+    {
+        "question": "What are the three main components of the Transformer architecture?",
+        "ground_truth_answer": "The three main components are the encoder stack, decoder stack, and attention mechanisms (self-attention and encoder-decoder attention).",
+        "relevant_chunks": [
+            "text_0",
+            "text_10",
+            "text_18"
+        ],
+        "page_numbers": [
+            1,
+            3,
+            5
+        ]
+    },
+    {
+        "question": "How does self-attention work in the Transformer?",
+        "ground_truth_answer": "Self-attention computes attention weights by using queries, keys, and values derived from the input sequence. It calculates compatibility between each position and all other positions, allowing the model to weigh the importance of different parts of the input when processing each position.",
+        "relevant_chunks": [
+            "text_18",
+            "text_7",
+            "text_19"
+        ],
+        "page_numbers": [
+            2,
+            5
+        ]
+    },
+    {
+        "question": "What is multi-head attention and why is it used?",
+        "ground_truth_answer": "Multi-head attention runs multiple attention mechanisms in parallel, with different learned linear transformations of queries, keys, and values. This allows the model to attend to information from different representation subspaces at different positions, capturing different types of relationships.",
+        "relevant_chunks": [
+            "text_17",
+            "text_18",
+            "text_15"
+        ],
+        "page_numbers": [
+            4,
+            5
+        ]
+    },
+    {
+        "question": "What is the dimension of the model in the paper's base configuration?",
+        "ground_truth_answer": "The base model uses d_model = 512, with 6 encoder and decoder layers, and 8 attention heads.",
+        "relevant_chunks": [
+            "text_17",
+            "text_10",
+            "text_11"
+        ],
+        "page_numbers": [
+            3,
+            5
+        ]
+    },
+    {
+        "question": "How does the Transformer handle positional information?",
+        "ground_truth_answer": "The Transformer uses sinusoidal positional encodings added to the input embeddings to inject information about the relative or absolute position of tokens in the sequence.",
+        "relevant_chunks": [
+            "text_21",
+            "text_37",
+            "text_31"
+        ],
+        "page_numbers": [
+            6,
+            8,
+            9
+        ]
+    },
+    {
+        "question": "What are the advantages of the Transformer over RNNs and CNNs?",
+        "ground_truth_answer": "The Transformer reduces sequential computation, allows for more parallelization, and has shorter path lengths between long-range dependencies. It achieves better performance while being more parallelizable and requiring significantly less time to train.",
+        "relevant_chunks": [
+            "text_5",
+            "text_1",
+            "text_6"
+        ],
+        "page_numbers": [
+            1,
+            2
+        ]
+    },
+    {
+        "question": "What training optimizations are used in the Transformer?",
+        "ground_truth_answer": "The model uses label smoothing during training, the Adam optimizer with custom learning rate scheduling (warmup and decay), dropout, and residual connections.",
+        "relevant_chunks": [
+            "text_29",
+            "text_32",
+            "text_33"
+        ],
+        "page_numbers": [
+            7,
+            8
+        ]
+    },
+    {
+        "question": "How is the attention score calculated in the Transformer?",
+        "ground_truth_answer": "The attention score is calculated as Attention(Q,K,V) = softmax(QK^T/√dk)V, where Q is queries, K is keys, V is values, and dk is the dimension of the keys.",
+        "relevant_chunks": [
+            "text_13",
+            "text_15",
+            "text_17"
+        ],
+        "page_numbers": [
+            4,
+            5
+        ]
+    },
+    {
+        "question": "What is the purpose of the scaling factor in the attention mechanism?",
+        "ground_truth_answer": "The scaling factor (1/√dk) is used to counteract the effect of the dot products growing large in magnitude for large values of dk, which could push the softmax function into regions with extremely small gradients.",
+        "relevant_chunks": [
+            "text_14",
+            "text_15",
+            "text_13"
+        ],
+        "page_numbers": [
+            4
+        ]
+    },
+    {
+        "question": "What is the role of the feed-forward networks in the Transformer?",
+        "ground_truth_answer": "The feed-forward networks in each encoder and decoder layer consist of two linear transformations with ReLU activation in between, processing each position independently and identically. They allow the model to process the attended information and introduce non-linearity.",
+        "relevant_chunks": [
+            "text_19",
+            "text_10",
+            "text_6"
+        ],
+        "page_numbers": [
+            2,
+            3,
+            5
+        ]
+    },
+    {
+        "question": "How does the decoder prevent attention to subsequent positions?",
+        "ground_truth_answer": "The decoder uses masked multi-head attention in its self-attention layer, which prevents positions from attending to subsequent positions by masking out (setting to -infinity) all values in the input of the softmax which correspond to illegal connections.",
+        "relevant_chunks": [
+            "text_11",
+            "text_19",
+            "text_18"
+        ],
+        "page_numbers": [
+            3,
+            5
+        ]
+    },
+    {
+        "question": "What tasks was the Transformer evaluated on?",
+        "ground_truth_answer": "The Transformer was evaluated on machine translation tasks (WMT 2014 English-to-German and English-to-French translation) and showed superior performance while being more parallelizable and requiring significantly less time to train.",
+        "relevant_chunks": [
+            "text_1",
+            "text_32",
+            "text_40"
+        ],
+        "page_numbers": [
+            1,
+            8,
+            10
+        ]
+    },
+    {
+        "question": "What is the computational complexity of self-attention compared to recurrent layers?",
+        "ground_truth_answer": "Self-attention has a complexity of O(n²·d) where n is sequence length and d is representation dimension, while recurrent layers have complexity O(n·d²). Self-attention is faster for sequences shorter than the representation dimensionality.",
+        "relevant_chunks": [
+            "text_26",
+            "text_24",
+            "text_23"
+        ],
+        "page_numbers": [
+            6,
+            7
+        ]
+    },
+    {
+        "question": "What is the purpose of residual connections in the Transformer?",
+        "ground_truth_answer": "Residual connections are used around each sub-layer (self-attention and feed-forward networks), followed by layer normalization. They help with training deeper networks by allowing gradients to flow directly through the network.",
+        "relevant_chunks": [
+            "text_10",
+            "text_19",
+            "text_11"
+        ],
+        "page_numbers": [
+            3,
+            5
+        ]
+    },
+    {
+        "question": "How does the Transformer handle varying sequence lengths?",
+        "ground_truth_answer": "The Transformer handles varying sequence lengths through padding and masking. The attention mechanism can be implemented to mask out padded positions, ensuring they don't contribute to the attention calculations.",
+        "relevant_chunks": [
+            "text_5",
+            "text_4",
+            "text_1"
+        ],
+        "page_numbers": [
+            1,
+            2
+        ]
+    }
+]
