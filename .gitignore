@@ -166,7 +166,4 @@ cython_debug/
 commands
 lancedb/
 .envrc
-requirements.txt
-gradio-app.py
-notebooks/base-mm-rag.ipynb
 ignore/

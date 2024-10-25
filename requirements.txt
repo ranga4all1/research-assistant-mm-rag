@@ -1,6 +1,0 @@
-pymupdf
-sentence-transformers
-lancedb
-pandas
-pillow
-tqdm
