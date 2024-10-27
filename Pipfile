@@ -19,6 +19,7 @@ python-dotenv = "*"
 tqdm = "*"
 gradio = "*"
 rouge-score = "*"
+evidently = "*"
 
 [dev-packages]
 tqdm = "*"
