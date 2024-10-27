@@ -2,7 +2,11 @@
 
 This is your friendly Research Assistant which is a RAG application built with LLM.
 
-![Research Assistant](images/research-assistant-banner.jpg)
+<p align="center">
+    <img src="images/research-assistant-banner.jpg"  width="700" height="400">
+</p>
+
+<!-- ![Research Assistant](images/research-assistant-banner.jpg) -->
 
 This Research Assistant utilizes a Retrieval-Augmented Generation (RAG) approach with Large Language Models (LLMs). RAG combines the power of information retrieval with the generative capabilities of LLMs, allowing the system to access and leverage relevant information from the uploaded research papers. This enables more accurate, context-aware responses to user queries about specific research content.
 
@@ -66,6 +70,7 @@ Users can upload their own research paper in PDF format for analysis and queryin
         - CLIP pretrained(`openai/clip-vit-base-patch32`),
     - together ai(`meta-llama/Llama-Vision-Free`): For generating answers
 - `Gradio` for application user interface
+- `Evidently` for RAG application monitoring
 - `Docker` for containerization
 - `AWS Elastic Beanstalk` for cloud deployment
 
@@ -95,7 +100,7 @@ pip install pipenv
 
 Once installed, you can install the app dependencies:
 ```python
-    pipenv install pymupdf sentence-transformers pandas pillow scikit-learn einops lancedb transformers together python-dotenv tqdm gradio rouge-score
+    pipenv install pymupdf sentence-transformers pandas pillow scikit-learn einops lancedb transformers together python-dotenv tqdm gradio evidently rouge-score
 
     pipenv install --dev notebook==7.1.2 ipywidgets
 ```
@@ -120,9 +125,20 @@ cd research-assistant
 pipenv run python ingest.py
 pipenv run python gradio-app.py
 ```
-Open this link in your browser to use the app: `http://localhost:7860` and follow onscreen instructions.
+Open this link in your browser to use the app: `http://localhost:7860`
 
-![ra-gradio-app](images/ra-gradio-app.png)
+User Interface has 3 Tabs:
+
+- **`Document Upload`**: Upload your research paper in PDF format and generate vector embeddings.
+- **`Query system`**: Ask questions about the uploaded paper and get answers.
+- **`System monitoring`**: View the a briefperformance report.
+
+A detailed performance report is generated in the `monitoring` folder - [performance_report.html](monitoring/performance_report.html)
+
+![Gradio-interface-1](images/interface-1.png)
+![Gradio-interface-2](images/interface-2.png)
+![Gradio-interface-3](images/interface-3.png)
+
 
 ### code
 
@@ -248,6 +264,15 @@ The evaluation results are stored in [`eval/evaluation_results.json`](eval/evalu
 
 Additional details about the evaluation can be found in [`eval/README.md`](eval/README.md).
 
+## Monitoring
+
+For monitoring the RAG application, we use Evidently.
+
+- A brief system monitoring dashboard is available in gradio interface.
+- A detailed performance report is generated in the `monitoring` folder - [performance_report.html](monitoring/performance_report.html)
+
+![performance-report](images/performance-report.png)
+
 
 ## Other
 
@@ -272,6 +297,6 @@ The **Research Assistant** streamlines the process of extracting and understandi
 Consider below steps in next iteration of the project:
 
 - Explore using workflow orchestrator for Ingestion Pipeline (e.g. Mage, dlt, Airflow, Prefect etc.)
-- Explore Fusion RAG for re-ranking and user query rewriting etc.
+- Explore Fusion RAG: for re-ranking and user query rewriting etc.
 - Fine tune to improve evaluation results
-- Add monitoring and observability
+- Fine tune monitoring and observability. Separate monitoring dashboard from the user interface.

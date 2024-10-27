@@ -162,11 +162,11 @@ class RAGFeedbackCollector:
 
     @staticmethod
     def collect_feedback(answer: str) -> Dict[str, Any]:
-        """Collect basic feedback metrics about the RAG response."""
+        """Collect basic feedback metrics about the RAG response. TODO for next iteration of project."""
         return {
-            'answer_relevance': float(np.random.uniform(0, 1)),  # Replace with actual feedback
-            'answer_completeness': float(np.random.uniform(0, 1)),  # Replace with actual feedback
-            'retrieval_precision': float(np.random.uniform(0, 1))  # Replace with actual feedback
+            'answer_relevance': float(np.random.uniform(0, 1)),
+            'answer_completeness': float(np.random.uniform(0, 1)),
+            'retrieval_precision': float(np.random.uniform(0, 1))
         }
 
 def setup_rag_monitoring(rag_system):

@@ -74,20 +74,11 @@ def query_question(question, top_k, model):
     return answer, sources
 
 
-# def show_performance_report():
-#     report_path = './monitoring/performance_report.html'
-#     if os.path.exists(report_path):
-#         with open(report_path, 'r') as file:
-#             report_content = file.read()
-#         return report_content
-#     else:
-#         return "No report available. Please ensure the report is generated."
-
 def show_performance_report():
     report_path = './monitoring/performance_report.html'
     if os.path.exists(report_path):
         # Temporarily using a small HTML snippet for testing
-        test_content = "<h1>Test Report Loaded Successfully</h1><p>This is a sample content.</p>"
+        test_content = "<h1>Detailed report:</h1><p>Available in the monitoring folder.</p>"
         return test_content
     else:
         return "Report file not found."
@@ -158,11 +149,11 @@ def create_gradio_app():
                 outputs=[query_stats, retrieval_stats, diversity_stats]
             )
 
-            # # Link to detailed report
-            # gr.Markdown("""
-            #     ### Detailed Monitoring Reports
-            #     - View the full performance report: [performance_report.html](./monitoring/performance_report.html)
-            # """)
+            # Link to detailed report
+            gr.Markdown("""
+                ### Detailed Monitoring Reports
+                - View the full performance report in the monitoring folder.)
+            """)
 
             # Inline report display
             report_button = gr.Button("View Detailed Report")
