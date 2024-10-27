@@ -131,7 +131,7 @@ User Interface has 3 Tabs:
 
 - **`Document Upload`**: Upload your research paper in PDF format and generate vector embeddings.
 - **`Query system`**: Ask questions about the uploaded paper and get answers.
-- **`System monitoring`**: View the a briefperformance report.
+- **`System monitoring`**: View the a brief performance report.
 
 A detailed performance report is generated in the `monitoring` folder - [performance_report.html](monitoring/performance_report.html)
 
@@ -229,12 +229,13 @@ We have the following notebooks:
 
 ## RAG flow and Retrieval evaluation
 
-We have python scripts for RAG flow and retrieval evaluation in:
-[`eval`](eval) folder:
-    - [`ground-truth-generator.py`](eval/ground-truth-generator.py): Generating the ground truth dataset for retrieval evaluation.
-    - [`ground_truth_dataset.json`](eval/ground_truth_dataset.json): The ground truth dataset for retrieval evaluation.
-    - [`rag-eval.py`](eval/rag-eval.py): The RAG flow and retrieval evaluation.
-    - [`evaluation_results.json`](eval/evaluation_results.json): The evaluation results.
+We have python scripts for RAG flow and retrieval evaluation in [`eval`](eval) folder:
+
+- [`ground-truth-generator.py`](eval/ground-truth-generator.py): Generating the ground truth dataset for retrieval evaluation.
+- [`ground_truth_dataset.json`](eval/ground_truth_dataset.json): The ground truth dataset for retrieval evaluation.
+- [`rag-eval.py`](eval/rag-eval.py): The RAG flow and retrieval evaluation.
+- [`evaluation_results.json`](eval/evaluation_results.json): The evaluation results.
+
 
 ### Evaluation steps
 
