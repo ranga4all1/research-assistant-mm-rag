@@ -8,8 +8,14 @@ __pycache__/
 *.sqlite3
 
 # Ignore data
-data/raw/
-data/processed/
+# data/raw/
+# data/processed/
 
 # Ignore notebooks
 notebooks/
+
+# Ignore eval
+eval/
+
+# Ignore images
+images/

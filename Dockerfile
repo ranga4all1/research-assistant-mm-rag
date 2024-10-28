@@ -24,4 +24,4 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 # Command to run the Gradio app (actual script and app in the research-assistant folder)
-CMD ["python", "research-assistant/gradio-app.py"]
+CMD python research-assistant/ingest.py && python research-assistant/gradio-app.py

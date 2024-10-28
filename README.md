@@ -129,8 +129,16 @@ Open this link in your browser to use the app: `http://localhost:7860`
 
 User Interface has 3 Tabs:
 
-- **`Document Upload`**: Upload your research paper in PDF format and generate vector embeddings.
+- **`Document Upload`**: Upload your research paper in PDF format and generate vector embeddings. You can use research paper available here [/data/raw/attention.pdf](/data/raw/attention.pdf).
+
 - **`Query system`**: Ask questions about the uploaded paper and get answers.
+
+    Sample questions to ask:
+
+    1. What is a transformer?
+    2. What is an attention mechanism?
+    3. What is transformer architecture? Is there any figure referred in research paper showing this architecture?
+
 - **`System monitoring`**: View the a brief performance report.
 
 A detailed performance report is generated in the `monitoring` folder - [performance_report.html](monitoring/performance_report.html)
@@ -146,7 +154,7 @@ The code for the application is in the [`research-assistant`](research-assistant
 
 - [`ingest.py`](research-assistant/ingest.py) - the ingestion pipeline for the data
 - [`rag.py`](research-assistant/rag.py) - the RAG logic
-- [`gradio-app.py`](research-assistant/gradio-app.py) - the gradio application
+- [`gradio-app.py`](research-assistant/gradio-app.py) - the gradio  application for interface
 
 
 ## Containerization
@@ -270,7 +278,43 @@ Additional details about the evaluation can be found in [`eval/README.md`](eval/
 For monitoring the RAG application, we use Evidently.
 
 - A brief system monitoring dashboard is available in gradio interface.
+    1. Click on **`Refresh Monitoring stats`** button.
+
+    Sample stats:
+
+    **`Query Statistics`**: Query patterns (length, frequency)
+    ```
+    {
+      "Total Queries": 13,
+      "Queries (Last 24h)": 3,
+      "Avg Answer Length": 459.6
+    }
+    ```
+
+    **`Retrieval Quality`**: Retrieval quality (scores, distribution)
+    ```
+    {
+      "Avg Score": -80325.282,
+      "Min Score": -91727,
+      "Max Score": -72401.308,
+      "Score Std Dev": 8271.131
+    }
+    ```
+
+    **`Retrieval Diversity`**: Retrieval diversity (document types)
+    ```
+    {
+      "Avg Documents": 2.9,
+      "Avg Diversity": 1
+    }
+    ```
+
 - A detailed performance report is generated in the `monitoring` folder - [performance_report.html](monitoring/performance_report.html)
+
+    - Drift detection for retrieval scores
+    - Missing values monitoring
+    - Data quality checks
+    - Performance trending
 
 ![performance-report](images/performance-report.png)
 

@@ -78,7 +78,7 @@ def show_performance_report():
     report_path = './monitoring/performance_report.html'
     if os.path.exists(report_path):
         # Temporarily using a small HTML snippet for testing
-        test_content = "<h1>Detailed report:</h1><p>Available in the monitoring folder.</p>"
+        test_content = "<h1>Detailed report:</h1><p>Available in the monitoring folder (./monitoring/performance_report) on your system.</p>"
         return test_content
     else:
         return "Report file not found."
@@ -150,10 +150,10 @@ def create_gradio_app():
             )
 
             # Link to detailed report
-            gr.Markdown("""
-                ### Detailed Monitoring Reports
-                - View the full performance report in the monitoring folder.)
-            """)
+            # gr.Markdown("""
+            #     ### Detailed Monitoring Reports
+            #     - View the full performance report in the monitoring folder.)
+            # """)
 
             # Inline report display
             report_button = gr.Button("View Detailed Report")
