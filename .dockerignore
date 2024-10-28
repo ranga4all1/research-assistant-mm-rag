@@ -6,6 +6,15 @@ __pycache__/
 *.pyd
 *.db
 *.sqlite3
+.Python
+env/
+venv/
+.env
+.venv
+*.log
+.git
+.gitignore
+.DS_Store
 
 # Ignore data
 # data/raw/

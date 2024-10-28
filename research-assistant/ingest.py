@@ -184,8 +184,10 @@ def main():
     # Configuration
     pdf_path = '../data/raw/attention.pdf'
     output_dir = "../data/processed/"
-    # pdf_path = './uploaded_pdfs'
-    # output_dir = './image_output'
+    # pdf_path = 'data/raw/attention.pdf'
+    # output_dir = "data/processed/"
+    # pdf_path = './uploaded_pdfs/attention.pdf'
+    # output_dir = './image_output/'
 
     # Process PDF
     pdf_processor = PDFProcessor(pdf_path)

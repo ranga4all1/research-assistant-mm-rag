@@ -14,10 +14,12 @@ RUN pip install pipenv
 RUN pipenv install --system --deploy
 
 # Copy the rest of the app's code to the container
-COPY . /app
+COPY . /app/
 
 # Expose the port Gradio will run on
 EXPOSE 7860
+
+ENV GRADIO_SERVER_NAME="0.0.0.0"
 
 # Set environment variables for the Gradio app
 ENV LC_ALL=C.UTF-8

@@ -162,10 +162,19 @@ The code for the application is in the [`research-assistant`](research-assistant
 Note: Ensure you have enough disk space to build the docker image.
 
 1. Complete the steps from earlier loacal reproduce section.
+2. Update **[research-assistant/ingest.py](research-assistant/ingest.py)** file as below:
+
+```
+# pdf_path = '../data/raw/attention.pdf'
+# output_dir = "../data/processed/"
+pdf_path = 'data/raw/attention.pdf'
+output_dir = "data/processed/"
+```
+
 2. From project root directory build docker image and then run it:
 ```python
 docker build -t research-assistant-mm-rag .
-docker run -p 7860:7860 research-assistant-mm-rag
+docker run --rm -p 7860:7860 research-assistant-mm-rag
 ```
 
 Alternatively you can run:
